@@ -22,6 +22,11 @@ namespace cis237assignment2
             const int X_START = 1;
             const int Y_START = 1;
 
+            /// <summary>
+            /// Create a new instance of UserInterface.
+            /// </summary>
+            UserInterface ui = new UserInterface();
+
             ///<summary>
             /// The first maze that needs to be solved.
             /// Note: You may want to make a smaller version to test and debug with.
@@ -49,12 +54,14 @@ namespace cis237assignment2
             //Create the second maze by transposing the first maze
             char[,] maze2 = transposeMaze(maze1, 12);
 
+
             /// <summary>
             /// Tell the instance to solve the first maze with the passed maze, and start coordinates.
             /// </summary>
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
 
-            
+            // Pause maze solving until user presses key.
+            ui.StartNextMaze();
 
             //Solve the transposed maze.
             mazeSolver.SolveMaze(maze2, X_START, Y_START);
