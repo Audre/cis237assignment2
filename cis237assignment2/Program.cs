@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Audre Staffen
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +23,7 @@ namespace cis237assignment2
             /// </summary>
             const int X_START = 1;
             const int Y_START = 1;
+            const int ARRAY_SIZE = 12;
 
             /// <summary>
             /// Create a new instance of UserInterface.
@@ -52,7 +55,7 @@ namespace cis237assignment2
             MazeSolver mazeSolver = new MazeSolver();
 
             //Create the second maze by transposing the first maze
-            char[,] maze2 = transposeMaze(maze1, 12);
+            char[,] maze2 = transposeMaze(maze1, ARRAY_SIZE);
 
 
             /// <summary>
@@ -86,11 +89,17 @@ namespace cis237assignment2
         /// <returns>transposedMaze</returns>
         static char[,] transposeMaze(char[,] mazeToTranspose, int sizeOfMaze)
         {
+            // create new instance of 2D array. sizeOfMaze is passed in as a parameter
             char[,] mazeTransposed = new char[sizeOfMaze, sizeOfMaze];
+
             //Write code here to create a transposed maze.
-            for (int i = 0; i < sizeOfMaze; i++)
+            // traverses through the array. has to be a 2D array. assigns the values
+            // to the new array. j is the xCoord (left and right) and i is the yCoord 
+            // (up and down). the j and i are switched - i is now the xCoord and j is 
+            // now the yCoord. ex maze[1,2] is now maze[2,1]. returns the new maze.
+            for (int i = 0; i < mazeToTranspose.GetLength(0); i++)
             {
-                for (int j = 0; j < sizeOfMaze; j++)
+                for (int j = 0; j < mazeToTranspose.GetLength(1); j++)
                 {
                     mazeTransposed[j, i] = mazeToTranspose[i, j];
                 }

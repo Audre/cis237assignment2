@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Audre Staffen
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,7 +51,10 @@ namespace cis237assignment2
             this.maze = maze;
             this.xStart = xStart;
             this.yStart = yStart;
-            this.mazeSolved = false; // boolean that is true when the maze is solved.
+            // boolean that is true when the maze is solved. this is set to false here
+            // so that when the next maze to be solved is called, the boolean is reset to
+            // false and the recursive call can solve the maze. 
+            this.mazeSolved = false; 
             
 
             //Do work needed to use mazeTraversal recursive call and solve the maze.
@@ -65,12 +70,13 @@ namespace cis237assignment2
         private void mazeTraversal(int xCoord, int yCoord)
         {   //Implement maze traversal recursive call
 
-            // starts out as false and is reset to false when SolveMaze method is called
+            // mazeSolved starts out as false and is reset to false when SolveMaze method is called.
             // if this is not here, the recursive calls don't stop until all the periods 
             // are found, resulting in most Xs changing to 0s.
             if (!mazeSolved) 
             {   
                 // this is so the solver only traverses to the array elements that are a '.' 
+                // and not the walls which are '#'
                 if (maze[xCoord, yCoord] == '.') 
                 {
                     // changes the '.' to 'X'
@@ -95,7 +101,8 @@ namespace cis237assignment2
                         // this first mazeTraversal until the new position is not a period. if the position it moved
                         // to is not a period, it steps back to the prior position and calls the next mazeTraveral after the last call. after it goes through 
                         // all 4 mazeTraversal calls, it has hit a dead end and must backtrack, turning the Xs into 0s until it can find
-                        // another period, which it then starts calling the mazeTraversals again, starting from the top. 
+                        // another period, which it then starts calling the mazeTraversals again, starting from the top and working its
+                        // way down until it has hit another dead end. 
                         ui.PrintMaze(maze);
                         mazeTraversal(xCoord, yCoord - 1);
                         mazeTraversal(xCoord + 1, yCoord);
