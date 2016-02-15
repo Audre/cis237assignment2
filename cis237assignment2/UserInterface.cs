@@ -10,7 +10,7 @@ namespace cis237assignment2
 {
     class UserInterface
     {
-        // traverses through each element in the array and prints to the screen. the array has
+        // Traverses through each element in the array and prints to the screen. The array has
         // to be a 2D array and can be of any size. j corresponds to the xCoords (right and left)
         // in the array and i corresponds to the yCoords (up and down).
         public void PrintMaze(char[,] maze)
@@ -26,14 +26,14 @@ namespace cis237assignment2
             Console.WriteLine();
         }
 
-        // prints to the screen that the maze is solved.
+        // Prints to the screen that the maze is solved.
         public void PrintMazeSolved()
         {
             Console.WriteLine("Maze Solved!");
             Console.WriteLine();
         }
 
-        // prints to the screen a message to the user to press a key to solve the next maze and waits for user input.
+        // Prints to the screen a message to the user to press a key to solve the next maze and waits for user input.
         public void StartNextMaze()
         {
             Console.WriteLine("Press any key to solve next maze.");

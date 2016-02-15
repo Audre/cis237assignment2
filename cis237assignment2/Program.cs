@@ -93,10 +93,10 @@ namespace cis237assignment2
             char[,] mazeTransposed = new char[sizeOfMaze, sizeOfMaze];
 
             //Write code here to create a transposed maze.
-            // traverses through the array. has to be a 2D array. assigns the values
+            // Traverses through the array. Has to be a 2D array. Assigns the values
             // to the new array. j is the xCoord (left and right) and i is the yCoord 
-            // (up and down). the j and i are switched - i is now the xCoord and j is 
-            // now the yCoord. ex maze[1,2] is now maze[2,1]. returns the new maze.
+            // (up and down). The j and i are switched - i is now the xCoord and j is 
+            // now the yCoord. Ex: maze[1,2] is now maze[2,1]. Returns the new maze.
             for (int i = 0; i < mazeToTranspose.GetLength(0); i++)
             {
                 for (int j = 0; j < mazeToTranspose.GetLength(1); j++)

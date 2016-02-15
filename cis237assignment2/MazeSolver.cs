@@ -51,7 +51,7 @@ namespace cis237assignment2
             this.maze = maze;
             this.xStart = xStart;
             this.yStart = yStart;
-            // boolean that is true when the maze is solved. this is set to false here
+            // Boolean that is true when the maze is solved. This is set to false here
             // so that when the next maze to be solved is called, the boolean is reset to
             // false and the recursive call can solve the maze. 
             this.mazeSolved = false; 
@@ -71,18 +71,18 @@ namespace cis237assignment2
         {   //Implement maze traversal recursive call
 
             // mazeSolved starts out as false and is reset to false when SolveMaze method is called.
-            // if this is not here, the recursive calls don't stop until all the periods 
+            // If this is not here, the recursive calls don't stop until all the periods 
             // are found, resulting in most Xs changing to 0s.
             if (!mazeSolved) 
             {   
-                // this is so the solver only traverses to the array elements that are a '.' 
-                // and not the walls which are '#'
+                // This is so the solver only traverses to the array elements that are a '.' 
+                // and not the walls which are '#'. 
                 if (maze[xCoord, yCoord] == '.') 
                 {
-                    // changes the '.' to 'X'
+                    // Changes the '.' to 'X'. 
                     maze[xCoord, yCoord] = 'X';
 
-                    // base case - checks if the position is along the outside wall, position 0 or 11 for x or y. if this is true
+                    // Base case - checks if the position is along the outside wall, position 0 or 11 for x or y. If this is true
                     // then the maze has been solved and mazeSolved is set to true so that the recursive loop will not continue
                     // if there are still periods in the array. Prints out the last move of the solver, which is the solved maze,
                     // then prints out that the maze is solved.
@@ -94,23 +94,27 @@ namespace cis237assignment2
                     }
                     else
                     {
-                        // prints maze - X is put at the current position, then calls mazeTraversal to move through the array. to
-                        // move left or right, the x coordinate is increased or decreased. to move up or down, the y coordinate is 
-                        // increased or decreased. after it moves (starts with the first mazeTraversal call), then it starts back 
-                        // at the top of the method, this time with the new y coordinate and the old x coordinate. it continues calling
-                        // this first mazeTraversal until the new position is not a period. if the position it moved
-                        // to is not a period, it steps back to the prior position and calls the next mazeTraveral after the last call. after it goes through 
-                        // all 4 mazeTraversal calls, it has hit a dead end and must backtrack, turning the Xs into 0s until it can find
-                        // another period, which it then starts calling the mazeTraversals again, starting from the top and working its
-                        // way down until it has hit another dead end. 
+                        // Prints maze - X is put at the current position, then calls mazeTraversal to move through the array. To
+                        // move left or right, the x coordinate is increased or decreased. To move up or down, the y coordinate is 
+                        // increased or decreased. The coordinates start at the passed in value (in this case [1,1]). The first 
+                        // mazeTraversal is called, decreasing the yCoord by 1 (moving to the down). The yCoord continues to decrease
+                        // (calling the first mazeTraversal method) until the new position is not a period. If the position 
+                        // is not a period, it steps back to the prior position and calls the next mazeTraveral after the last call. After 
+                        // all 4 mazeTraversal calls, a dead end has been reached and the position must backtrack, turning the Xs into 0s until 
+                        // another period is found. The first mazeTraversal call is started again, working down from the top of the mazeTraversals, 
+                        // until reaching another dead end. 
                         ui.PrintMaze(maze);
+                        // Up
                         mazeTraversal(xCoord, yCoord - 1);
+                        // Right
                         mazeTraversal(xCoord + 1, yCoord);
+                        // Left
                         mazeTraversal(xCoord - 1, yCoord);
+                        // Down
                         mazeTraversal(xCoord, yCoord + 1);
 
-                        // when it gets to this, all the mazeTraversals have been called, meaning it has hit a dead end and must backtrack
-                        // when it backtracks, the Xs it backtracks over are turned into 0s. 
+                        // When at this point, all the mazeTraversals have been called, meaning a dead end has been reached and must backtrack. 
+                        // When backtracking, the Xs backtracked over are turned into 0s. 
                         maze[xCoord, yCoord] = '0';
 
                     }
@@ -119,19 +123,5 @@ namespace cis237assignment2
 
             }
         }
-
-        //private void PrintMaze(char[,] maze)
-        //{
-        //    for (int i = 0; i < maze.GetLength(0); i++)
-        //    {
-        //        for (int j = 0; j < maze.GetLength(1); j++)
-        //        {
-        //            Console.Write(maze[i, j] + " ");
-        //        }
-        //        Console.WriteLine();
-        //    }
-        //    Console.WriteLine();
-
-        //}
     }
 }
