@@ -39,5 +39,11 @@ namespace cis237assignment2
             Console.WriteLine("Press any key to solve next maze.");
             Console.ReadLine();
         }
+
+        public void PrintMazeNotSolved()
+        {
+            Console.WriteLine("Maze cannot be solved!");
+            Console.WriteLine();
+        }
     }
 }
