@@ -116,6 +116,10 @@ namespace cis237assignment2
                         // When at this point, all the mazeTraversals have been called, meaning a dead end has been reached and must backtrack. 
                         // When backtracking, the Xs backtracked over are turned into 0s. 
                         maze[xCoord, yCoord] = '0';
+
+                        // If the the exit cannot be found, the x and y coordinates will eventually make it back to [1,1]. If the coordinates 
+                        // are [1,1] and mazeSolved is not true, then the maze could not be solved. Prints letting the user know 
+                        // that the maze could not be solved. 
                         if (xCoord == 1 && yCoord == 1 && !mazeSolved)
                         {
                             ui.PrintMazeNotSolved();
